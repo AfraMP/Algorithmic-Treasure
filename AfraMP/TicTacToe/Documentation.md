@@ -1,31 +1,32 @@
 # DOCUMENTATION
 ## Tic-Tac-Toe
-![Github Logo](https://camo.githubusercontent.com/8cf04a6dcc08ed39b13778a727819581acc566e5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d416d617a6f6e2d626c7565)
-![Github Logo](https://camo.githubusercontent.com/e579fafbb1bdb9e720e3f9c7eee3874223ef71e5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d507974686f6e2d627269676874677265656e)
-![Github Logo](https://camo.githubusercontent.com/d4fa9897ff15062a43ea2ef2957d088d3a5d9035/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c656574636f64652d76696f6c6574)<br>
-**Problem Statement**<br>
+<a><img src="https://img.shields.io/badge/-Amazon-blue" height="25">&nbsp;&nbsp;
+<img src= "https://img.shields.io/badge/-Geeks For Geeks-navy" height="25">&nbsp;&nbsp;
+<img src= "https://img.shields.io/badge/-Flipkart-red" height="25">&nbsp;&nbsp;
+<img src= "https://img.shields.io/badge/-Microsoft-navy" height="25">&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/-Python-blue" height="25"></a><br><br />
+**Problem Statement**<br><br />
 A Tic-Tac-Toe board is given after some moves are played. Find out if the given board is valid, i.e., is it possible to reach this board position after some moves or not.
 
-Note that every arbitrary filled grid of 9 spaces isn’t valid e.g. a grid filled with 3 X and 6 O isn’t valid situation because each player needs to take alternate turns.
+Note that every arbitrary filled grid of 9 spaces isn’t valid e.g. a grid filled with 3 X and 6 O isn’t valid situation because each player needs to take alternate turns.<br>
 
 Note :  The game starts with X<br>
-![Github Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSY0hjW057ZLjMY2dozuglqt1Uge2l-ckJ2FA&usqp=CAU)
 ```
 Example 1
-2
-X X O O X O O O O 
-X X O O O X X O X
+
+Input : 2
+        X X O O X O O O O 
+        X X O O O X X O X
+Ouput : Invalid
+        Valid
 ```
-> > Invalid<br>
-> > Valid
 ```
 Example 2
 
-1
-O X X X O X O O X
+Input : 1
+        O X X X O X O O X
+Output : Valid
 ```
-> > Valid
-
 #### Solution<br>
 In this problem we check the validity of the given inputs of a tic-tac-toe game. The game involves two players 'X' and 'O' who take turns marking the spaces in a 3×3 grid. There are 8 strategies in order to win this game.<br>
 Consider player 'X', if 'X' occupies one of the row or one of the column or occupies the diagonals of grid then 'X' wins. If 'X' wins then the game ends which also applies to 'O'.
@@ -64,9 +65,64 @@ PROGRAM ticTacToe<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE IF Possibilities(a, 'X') and Possibilities(a, 'O') THEN<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT Invalid<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE IF Possibilities(a, 'O') THEN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF countX == countO THEN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT Valid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT Invalid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE IF countO + 1 == countX or self.Possibilities(a, 'X') THEN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT Valid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT Invalid<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END IF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END FOR<br>
 END<br>
+<br />
+#### Python Code<br>
+```
+class ticTacToe:
+    
+    # method defining the possibilities of winnning
+    def Possibilities(self, a, b):
+        
+        return ((a[0] == b and a[1] == b and a[2] == a[0]) or
+            (a[3] == b and a[4] == b and a[5] == b) or
+            (a[6] == b and a[7] == b and a[8] == b) or
+            (a[0] == b and a[3] == b and a[6] == b) or
+            (a[1] == b and a[4] == b and a[7] == b) or
+            (a[2] == b and a[5] == b and a[8] == b) or
+            (a[0] == b and a[4] == b and a[8] == b) or
+            (a[2] == b and a[4] == b and a[6] == b))
 
+    # method used to check the validity of the given input
+    def validity(self, T):
+        if 1 <= T <= 100:
+            for i in range(T):
+                countX = 0
+                countO = 0
+                a = input().split()
+                for t in a:
+                    if t == 'X':
+                        countX += 1
+                    else:
+                        countO += 1
+                if countO > (countX) or (countX > countO + 1) :
+                    print("Invalid")
+                elif self.Possibilities(a, 'X') and self.Possibilities(a, 'O'):
+                    print("Invalid")
+                elif self.Possibilities(a, 'O'):
+                    if countX == countO:
+                        print('Valid')
+                    else:
+                        print("Invalid")
+                elif countO + 1 == countX or self.Possibilities(a, 'X'):
+                    print("Valid")
+                else:
+                    print("Invalid")
 
-
+# creating objects of class ticTacToe
+chec = ticTacToe()
+chec.validity(int(input()))
+```
+#### Complexity Analysis : <br>
+* Time Complexity : O(n^2)<br>
+* Space Complexity : O(n)

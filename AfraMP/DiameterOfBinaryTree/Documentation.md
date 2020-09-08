@@ -1,31 +1,37 @@
 # DOCUMENTATION
 ## DIAMETER OF BINARY TREE<br>
-<a><img src="https://img.shields.io/badge/-Amazon-blue" height="25">&nbsp;&nbsp;<img src= "https://img.shields.io/badge/-Interview Bit-navy" height="25">
-&nbsp;&nbsp;<img src= "https://img.shields.io/badge/-Python-red" height="25">&nbsp;&nbsp;
-<a><img src="https://img.shields.io/badge/-Philips-blue" height="25"></a><br>
-**Problem Statement**<br>
+<a><img src="https://img.shields.io/badge/-Amazon-blue" height="25">&nbsp;&nbsp;
+<img src= "https://img.shields.io/badge/-Microsoft-red" height="25">&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/-Philips-blue" height="25">&nbsp;&nbsp;
+<img src= "https://img.shields.io/badge/-Geeks For Geeks-navy" height="25">
+&nbsp;&nbsp;<img src= "https://img.shields.io/badge/-Python-red" height="25"></a><br><br />
+**Problem Statement**<br><br />
 Given a Binary Tree, find diameter of it.
-The diameter of a tree is the number of nodes on the longest path between two leaves in the tree. The diagram below shows two trees each with diameter nine, the leaves that form the ends of a longest path are shaded (note that there is more than one path in each tree of length nine, but no path longer than nine nodes).
+The diameter of a tree is the number of nodes on the longest path between two leaves in the tree. 
+The diagram below shows two trees each with diameter nine, the leaves that form the ends of a 
+longest path are shaded (note that there is more than one path in each tree of length nine, 
+but no path longer than nine nodes).
 ![image](http://geeksforgeeks.org/wp-content/uploads/tree_diameter.GIF)
 ```
 Example 1
 
-       1
-     /  \
-    2    3
+Input :   1
+         / \
+        2   3
+Output : 3
 ```
-> > 3
 ```
 Example 2
 
-         10
-        /   \
-      20    30
-    /   \ 
-   40   60
+Input :   10
+         /  \
+        20  30
+       /  \ 
+      40  60
+Output : 4
 ```
-> > 4
 #### Solution<br>
+###### Python code :
 ```
 class Node:
 
@@ -60,5 +66,8 @@ if __name__ == '__main__':
     root.right.right = Node(6)
     root.right.left.left = Node(7)
     root.right.left.right = Node(8)
-    print("The diameter of the tree is", getBTDiameter(root))
+    print(getBTDiameter(root))
 ```
+#### Complexity Analysis : <br>
+* Time Complexity : O(n)<br>
+* Space Complexity : O(Height  of the tree)

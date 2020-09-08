@@ -1,27 +1,33 @@
 # DOCUMENTATION
 ## Swap List Nodes In Pairs<br>
-<a><img src= "https://img.shields.io/badge/-Microsoft-orange" height="25">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Amazon-blue" height="25">&nbsp;&nbsp;<img src= "https://img.shields.io/badge/-Interview Bit-navy" height="25">
+<a><img src= "https://img.shields.io/badge/-Microsoft-orange" height="25">&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/-Amazon-blue" height="25">&nbsp;&nbsp;
+<img src= "https://img.shields.io/badge/-Interview Bit-navy" height="25">
 &nbsp;&nbsp;<img src= "https://img.shields.io/badge/-Python-red" height="25"></a>
 
- **Problem Statement**<br>
+ **Problem Statement**<br><br />
 Given a linked list, swap every two adjacent nodes and return its head.
-
-For example,
-Given 1->2->3->4, you should return the list as 2->1->4->3.
 ```
 Example 1
  
-1 2 3 4
+Input  : 1 2 3 4
+Output : 2 1 4 3
 ```
-> > 2 1 4 3
 ```
 Example 2
 
-2 4 6 3 1 5
+Input  : 2 4 6 3 1 5
+Output : 4 2 3 6 5 1
 ```
-> > 4 2 3 6 5 1<br>
 #### Solution<br>
-Time complexity for this problem is O(n).
+Input contains a list of elements in a linked list and the expected output can be achieved by using a single linked list.
+Firstly a class called Node is created, which represents a node of linked list with 
+variables next that acts as a pointer and data used to store elements in it.
+The method rearrange is used to swap the adjacent nodes in following manner :
+* If head or node pointed by head is none return head. 
+* If head or node pointed by head is none set current node as head and consider 2 nodes at a time and swap their links
+
+###### Python code
 ```
 # A linked list node
 class Node:
@@ -79,3 +85,6 @@ if __name__ == '__main__':
     printList(head)
  
 ```
+#### Complexity Analysis :<br>
+* Time Complexity : O(n)<br>
+* Space Complexity  : O(n)
